@@ -1,0 +1,3 @@
+[
+  "type Query {\n  getGroups(db_id: Int, limit: Int): [Group]!\n}\n\ntype Group {\n  trigger_group_id: Int\n  group_title: String\n  db_id: Int\n  disabled: Boolean\n  group_type: String\n}"
+]
