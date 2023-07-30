@@ -11,7 +11,8 @@
     "start:dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
     "test": "jest",
     "migration:create": "npx typeorm migration:create ./src/migration/1688980030985-postrefect.ts",
-    "migration:run": "pnpm run build && npx typeorm migration:run -d .\\dist\\ds.js"
+    "migration:run": "pnpm run build && npx typeorm migration:run -d .\\dist\\ds.js",
+    "db:diagram": "typeorm-uml ormconfig.json"
   },
   "prettier": {
     "semi": false,

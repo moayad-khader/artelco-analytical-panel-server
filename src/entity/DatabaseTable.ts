@@ -10,7 +10,8 @@ import {
 } from 'typeorm'
 import { constants } from '../constants'
 import { Database } from "./Database";
-import { TableColumn } from "./TableColumn"
+import { DataTableColumn } from "./DatabaseTableColumn"
+import { DatabaseTableType } from "./DatabaseTabletype";
 
 @Entity('artelco_analytical_panel_database_tables', {
   database: constants.MAIN_DB,
@@ -18,6 +19,12 @@ import { TableColumn } from "./TableColumn"
 export class DatabaseTable {
   @PrimaryGeneratedColumn()
   db_table_id: number
+
+  @Column()
+  db_id: number
+
+  @Column()
+  db_table_type_id: number
 
   @Column()
   db_table_name: string
@@ -32,7 +39,11 @@ export class DatabaseTable {
   @JoinColumn({ name: 'db_id', referencedColumnName: 'db_id' })
   database: Database
 
-  @OneToMany(() => TableColumn, (tableColumn) => tableColumn.database_table)
-  table_column: TableColumn[]
+  @ManyToOne(() => DatabaseTableType, (databaseTableType) => databaseTableType.db_table_type_id)
+  @JoinColumn({ name: 'db_table_type_id', referencedColumnName: 'db_table_type_id' })
+  db_table_type: DatabaseTableType
+
+  @OneToMany(() => DataTableColumn, (dataTableColumn) => dataTableColumn.db_table)
+  db_table_column: DataTableColumn[]
 
 }

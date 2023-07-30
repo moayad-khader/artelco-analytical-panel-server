@@ -8,7 +8,7 @@ import {
   JoinColumn
 } from 'typeorm'
 import { constants } from '../constants'
-import { TableColumn } from "./TableColumn"
+import { DataTableColumn } from "./DatabaseTableColumn"
 
 @Entity('artelco_analytical_panel_billboards', {
   database: constants.MAIN_DB,
@@ -47,7 +47,7 @@ export class Billboard {
   @UpdateDateColumn()
   public updatedAt: Date
 
-  @OneToOne(() => TableColumn, (tableColumn) => tableColumn.table_column_id)
-  @JoinColumn({ name: 'table_column_id', referencedColumnName: 'table_column_id' })
-  table_column: TableColumn
+  @OneToOne(() => DataTableColumn, (dataTableColumn) => dataTableColumn.db_table_column_id)
+  @JoinColumn({ name: 'db_table_column_id', referencedColumnName: 'db_table_column_id' })
+  db_table_column: DataTableColumn
 }

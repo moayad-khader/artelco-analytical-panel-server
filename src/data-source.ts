@@ -3,12 +3,24 @@ import 'reflect-metadata'
 import { DataSource } from 'typeorm'
 import { User } from './entity/User'
 import { Organization } from "./entity/Organization";
+import { Database } from "./entity/Database";
+import { DatabaseTable } from "./entity/DatabaseTable";
+import { DataTableColumn } from "./entity/DatabaseTableColumn";
+import { DatabaseTableType } from "./entity/DatabaseTabletype";
+import { DatabaseTableFilter } from "./entity/DatabaseTableFilter";
+import { Billboard } from "./entity/Billboard";
 
 import envVars from './vars'
 
 const models = [
   User,
-  Organization
+  Organization,
+  Database,
+  DatabaseTableType,
+  DatabaseTable,
+  DataTableColumn,
+  DatabaseTableFilter,
+  Billboard
 ]
 
 export const AppDataSource = new DataSource({

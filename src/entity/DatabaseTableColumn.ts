@@ -13,15 +13,20 @@ import { DatabaseTable } from './DatabaseTable'
 @Entity('artelco_analytical_panel_database_tables_columns', {
   database: constants.MAIN_DB,
 })
-export class TableColumn {
+export class DataTableColumn {
   @PrimaryGeneratedColumn()
-  table_column_id: number
+  db_table_column_id: number
 
   @Column()
   db_table_id: number
 
   @Column()
-  table_column_name: string
+  db_table_column_name: string
+
+
+  @Column()
+  db_table_column_type: string
+
 
   @CreateDateColumn()
   public createdAt: Date
@@ -31,5 +36,5 @@ export class TableColumn {
 
   @ManyToOne(() => DatabaseTable, (databaseTable) => databaseTable.db_table_id)
   @JoinColumn({ name: 'db_table_id', referencedColumnName: 'db_table_id' })
-  database_table: DatabaseTable
+  db_table: DatabaseTable
 }
