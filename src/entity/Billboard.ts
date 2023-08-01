@@ -9,7 +9,7 @@ import {
 } from 'typeorm'
 import { constants } from '../constants'
 import { DataTableColumn } from "./DatabaseTableColumn"
-
+import { DatabaseTableFilter } from "./DatabaseTableFilter";
 @Entity('artelco_analytical_panel_billboards', {
   database: constants.MAIN_DB,
 })
@@ -18,7 +18,10 @@ export class Billboard {
   billboard_id: number
 
   @Column()
-  table_column_id: number
+  db_table_column_id: number
+
+  @Column()
+  db_table_filter_id: number
 
   @Column()
   billboard_title_en: string
@@ -50,4 +53,8 @@ export class Billboard {
   @OneToOne(() => DataTableColumn, (dataTableColumn) => dataTableColumn.db_table_column_id)
   @JoinColumn({ name: 'db_table_column_id', referencedColumnName: 'db_table_column_id' })
   db_table_column: DataTableColumn
+
+  @OneToOne(() => DatabaseTableFilter, (databaseTableFilter) => databaseTableFilter.db_table_filter_id)
+  @JoinColumn({ name: 'db_table_filter_id', referencedColumnName: 'db_table_filter_id' })
+  db_table_filter: DatabaseTableFilter
 }

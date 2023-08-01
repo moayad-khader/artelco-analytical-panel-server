@@ -9,6 +9,10 @@ import {
 import { constants } from '../constants'
 import { DatabaseTable } from './DatabaseTable'
 
+
+
+//SECTION - Types: IVR, Agents, Skillset, ...etc.
+
 @Entity('artelco_analytical_panel_database_tables_types', {
   database: constants.MAIN_DB,
 })
