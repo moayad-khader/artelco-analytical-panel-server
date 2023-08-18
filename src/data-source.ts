@@ -1,14 +1,16 @@
 import { FastifyInstance } from 'fastify'
 import 'reflect-metadata'
+import migrationScript from "./script";
 import { DataSource } from 'typeorm'
 import { User } from './entity/User'
-import { Organization } from "./entity/Organization";
-import { Database } from "./entity/Database";
-import { DatabaseTable } from "./entity/DatabaseTable";
-import { DataTableColumn } from "./entity/DatabaseTableColumn";
-import { DatabaseTableType } from "./entity/DatabaseTabletype";
-import { DatabaseTableFilter } from "./entity/DatabaseTableFilter";
-import { Billboard } from "./entity/Billboard";
+import { Organization } from './entity/Organization'
+import { Database } from './entity/Database'
+import { DatabaseTable } from './entity/DatabaseTable'
+import { DataTableColumn } from './entity/DatabaseTableColumn'
+import { DatabaseTableType } from './entity/DatabaseTabletype'
+import { DatabaseTableFilter } from './entity/DatabaseTableFilter'
+import { Billboard } from './entity/Billboard'
+
 
 import envVars from './vars'
 
@@ -20,7 +22,7 @@ const models = [
   DatabaseTable,
   DataTableColumn,
   DatabaseTableFilter,
-  Billboard
+  Billboard,
 ]
 
 export const AppDataSource = new DataSource({
@@ -46,6 +48,7 @@ export async function dbConnector(fastify: FastifyInstance) {
     await AppDataSource.initialize()
       .then(async () => {
         console.log('DB conn success')
+        migrationScript(AppDataSource)
       })
       .catch((error) => console.log(error))
   } catch (e) {
