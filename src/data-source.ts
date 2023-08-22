@@ -48,7 +48,7 @@ export async function dbConnector(fastify: FastifyInstance) {
     await AppDataSource.initialize()
       .then(async () => {
         console.log('DB conn success')
-        migrationScript(AppDataSource)
+        // migrationScript(AppDataSource)
       })
       .catch((error) => console.log(error))
   } catch (e) {
