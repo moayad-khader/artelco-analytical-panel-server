@@ -5,11 +5,12 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  JoinColumn
+  JoinColumn,
 } from 'typeorm'
 import { constants } from '../constants'
-import { DataTableColumn } from "./DatabaseTableColumn"
-import { DatabaseTableFilter } from "./DatabaseTableFilter";
+import { DataTableColumn } from './DatabaseTableColumn'
+import { DatabaseTableFilter } from './DatabaseTableFilter'
+
 @Entity('artelco_analytical_panel_billboards', {
   database: constants.MAIN_DB,
 })
@@ -17,8 +18,10 @@ export class Billboard {
   @PrimaryGeneratedColumn()
   billboard_id: number
 
+
   @Column()
   db_table_column_id: number
+
 
   @Column()
   db_table_filter_id: number
@@ -50,11 +53,23 @@ export class Billboard {
   @UpdateDateColumn()
   public updatedAt: Date
 
-  @OneToOne(() => DataTableColumn, (dataTableColumn) => dataTableColumn.db_table_column_id)
-  @JoinColumn({ name: 'db_table_column_id', referencedColumnName: 'db_table_column_id' })
+  @OneToOne(
+    () => DataTableColumn,
+    (dataTableColumn) => dataTableColumn.db_table_column_id,
+  )
+  @JoinColumn({
+    name: 'db_table_column_id',
+    referencedColumnName: 'db_table_column_id',
+  })
   db_table_column: DataTableColumn
 
-  @OneToOne(() => DatabaseTableFilter, (databaseTableFilter) => databaseTableFilter.db_table_filter_id)
-  @JoinColumn({ name: 'db_table_filter_id', referencedColumnName: 'db_table_filter_id' })
+  @OneToOne(
+    () => DatabaseTableFilter,
+    (databaseTableFilter) => databaseTableFilter.db_table_filter_id,
+  )
+  @JoinColumn({
+    name: 'db_table_filter_id',
+    referencedColumnName: 'db_table_filter_id',
+  })
   db_table_filter: DatabaseTableFilter
 }

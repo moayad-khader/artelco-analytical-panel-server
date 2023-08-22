@@ -42,7 +42,7 @@ export const constants = {
   //SECTION -  SCHEMA Description
   SCHEMA_DESCRIPTION_USER: 'User',
   SCHEMA_DESCRIPTION_ORGANIZATION: 'Organization',
-
+  SCHEMA_DESCRIPTION_BILLBOARD: 'Billboard',
 
   //SECTION - DBs
   MAIN_DB: "Artelco"
