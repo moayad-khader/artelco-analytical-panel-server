@@ -38,6 +38,7 @@ export const constants = {
   //SECTION -  SCHEMA Tags
   SCHEMA_TAG_USER: 'User',
   SCHEMA_TAG_ORGANIZATION: 'Organization',
+  SCHEMA_TAG_BILLBOARD: 'Billboard',
 
   //SECTION -  SCHEMA Description
   SCHEMA_DESCRIPTION_USER: 'User',

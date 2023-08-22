@@ -18,7 +18,7 @@ import { getAll, getOne } from '@artelco/request.types/billboard.query.types'
 
 export default (fastify: FastifyInstance, opts, done) => {
   fastify.post<{ Body: createBody }>(Routes.billboard, {
-    preValidation: checkAuthorization,
+    // preValidation: checkAuthorization,
     schema: createSchema,
     handler: createHandler,
   })

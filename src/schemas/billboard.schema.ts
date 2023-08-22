@@ -4,7 +4,7 @@ import SchemaTypes from '../data/schema.types'
 import schemaTypes from '../data/schema.types'
 
 const createSchema = {
-  tags: [constants.SCHEMA_TAG_ORGANIZATION],
+  tags: [constants.SCHEMA_TAG_BILLBOARD],
   body: {
     type: constants.OBJECT_TYPE,
     properties: {
@@ -18,7 +18,15 @@ const createSchema = {
         billboard_threshold_warning: SchemaTypes.typeNumber,
         billboard_threshold_danger: SchemaTypes.typeNumber,
     },
-    required: ['organization_name'],
+    required: [
+      'db_table_column_id',
+      'db_table_filter_id',
+      'billboard_title_ar',
+      'billboard_title_en',
+      'billboard_icon',
+      'billboard_type',
+      'billboard_metric_type'
+    ],
   },
   response: {
     [constants.SUCCESS_CODE]: {
@@ -46,7 +54,7 @@ const createSchema = {
 }
 
 const updateSchema = {
-  tags: [constants.SCHEMA_TAG_ORGANIZATION],
+  tags: [constants.SCHEMA_TAG_BILLBOARD],
   body: {
     type: constants.OBJECT_TYPE,
     properties: {
@@ -89,7 +97,7 @@ const updateSchema = {
 }
 
 const getOneSchema = {
-  tags: [constants.SCHEMA_TAG_ORGANIZATION],
+  tags: [constants.SCHEMA_TAG_BILLBOARD],
   querystring: {
     type: constants.OBJECT_TYPE,
     properties: {
@@ -123,7 +131,7 @@ const getOneSchema = {
 }
 
 const getAllSchema = {
-  tags: [constants.SCHEMA_TAG_ORGANIZATION],
+  tags: [constants.SCHEMA_TAG_BILLBOARD],
   querystring: {
     type: constants.OBJECT_TYPE,
     properties: {
