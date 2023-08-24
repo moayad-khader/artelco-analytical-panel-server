@@ -10,7 +10,7 @@ import {
 import { constants } from '../constants'
 import { DataTableColumn } from './DatabaseTableColumn'
 import { DatabaseTableFilter } from './DatabaseTableFilter'
-@Entity('artelco_analytical_panel_billboards', {
+@Entity('artelco_analytical_panel_charts', {
   database: constants.MAIN_DB,
 })
 export class Chart {

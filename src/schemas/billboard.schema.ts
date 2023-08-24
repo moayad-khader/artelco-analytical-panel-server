@@ -1,7 +1,6 @@
 import { FastifySchema } from 'fastify'
 import constants from '../constants'
 import SchemaTypes from '../data/schema.types'
-import schemaTypes from '../data/schema.types'
 
 const createSchema = {
   tags: [constants.SCHEMA_TAG_BILLBOARD],
@@ -69,7 +68,7 @@ const updateSchema = {
       billboard_threshold_warning: SchemaTypes.typeNumber,
       billboard_threshold_danger: SchemaTypes.typeNumber,
     },
-    required: ['organization_id'],
+    required: ['billboard_id'],
   },
   response: {
     [constants.SUCCESS_CODE]: {
@@ -135,9 +134,9 @@ const getAllSchema = {
   querystring: {
     type: constants.OBJECT_TYPE,
     properties: {
-      billboard_id: SchemaTypes.typeNumber,
+      orgnaization_id: SchemaTypes.typeNumber,
     },
-    required: ['billboard_id'],
+    required: ['orgnaization_id'],
   },
   response: {
     [constants.SUCCESS_CODE]: {
