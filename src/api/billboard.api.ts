@@ -24,19 +24,19 @@ export default (fastify: FastifyInstance, opts, done) => {
   })
 
   fastify.patch<{ Body: updateBody }>(Routes.billboard, {
-    preValidation: checkAuthorization,
+    // preValidation: checkAuthorization,
     schema: updateSchema,
     handler: updateHandler,
   })
 
   fastify.get<{ Querystring: getOne }>(Routes.billboard_single, {
-    preValidation: checkAuthorization,
+    // preValidation: checkAuthorization,
     schema: getOneSchema,
     handler: getOneHandler,
   })
 
   fastify.get<{ Querystring: getAll }>(Routes.billboard, {
-    preValidation: checkAuthorization,
+    // preValidation: checkAuthorization,
     schema: getAllSchema,
     handler: getAllHandler,
   })
