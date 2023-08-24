@@ -39,11 +39,13 @@ export const constants = {
   SCHEMA_TAG_USER: 'User',
   SCHEMA_TAG_ORGANIZATION: 'Organization',
   SCHEMA_TAG_BILLBOARD: 'Billboard',
+  SCHEMA_TAG_CHART: 'Chart',
 
   //SECTION -  SCHEMA Description
   SCHEMA_DESCRIPTION_USER: 'User',
   SCHEMA_DESCRIPTION_ORGANIZATION: 'Organization',
   SCHEMA_DESCRIPTION_BILLBOARD: 'Billboard',
+  SCHEMA_DESCRIPTION_CHART: 'Chart',
 
   //SECTION - DBs
   MAIN_DB: "Artelco"

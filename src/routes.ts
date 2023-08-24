@@ -5,5 +5,9 @@ export default {
 
   //SECTION - Billboard
   billboard: "/billboard",
-  billboard_single: "/billboard-single"
+  billboard_single: "/billboard-single",
+
+   //SECTION - Chart
+   chart: "/chart",
+   chart_single: "/chart-single"
 }

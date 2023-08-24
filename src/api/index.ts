@@ -3,6 +3,7 @@ import constants from '../constants'
 import UserAPI from './user.api'
 import OrganizationApi from './organization.api'
 import BillboardApi from './billboard.api'
+import ChartApi from './chart.api'
 
 export const app = Fastify({ logger: true })
 
@@ -50,3 +51,4 @@ app.register(require('@fastify/swagger-ui'), {
 app.register(UserAPI, { prefix: constants.API_PREFIX })
 app.register(OrganizationApi, { prefix: constants.API_PREFIX })
 app.register(BillboardApi, { prefix: constants.API_PREFIX })
+app.register(ChartApi, { prefix: constants.API_PREFIX })

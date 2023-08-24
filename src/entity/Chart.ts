@@ -24,7 +24,10 @@ export class Chart {
   db_table_filter_id: number
 
   @Column()
-  chart_title: string
+  chart_title_ar: string
+
+  @Column()
+  chart_title_en: string
 
   @Column()
   chart_type: string
@@ -32,8 +35,8 @@ export class Chart {
   @Column()
   chart_dependency: string // NOTE - Filter based or Column Based
 
-  @Column()
-  chart_theme: string
+  // @Column()
+  // chart_theme: string
 
   @CreateDateColumn()
   public createdAt: Date
