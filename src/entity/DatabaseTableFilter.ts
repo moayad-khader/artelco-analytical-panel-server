@@ -24,6 +24,9 @@ export class DatabaseTableFilter {
   @Column()
   db_table_filter_corr_id: number
 
+  @Column()
+  db_table_type_id: number
+
   @CreateDateColumn()
   public createdAt: Date
 

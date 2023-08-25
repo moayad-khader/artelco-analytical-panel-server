@@ -129,6 +129,40 @@ const getOneSchema = {
   },
 }
 
+
+const getData = {
+  tags: [constants.SCHEMA_TAG_BILLBOARD],
+  querystring: {
+    type: constants.OBJECT_TYPE,
+    properties: {
+      billboard_id: SchemaTypes.typeNumber,
+    },
+    required: ['billboard_id'],
+  },
+  response: {
+    [constants.SUCCESS_CODE]: {
+      type: constants.OBJECT_TYPE,
+      properties: {
+        billboard_id: SchemaTypes.typeNumber,
+        db_table_column_id: SchemaTypes.typeNumber,
+        db_table_filter_id: SchemaTypes.typeNumber,
+        billboard_title_ar: SchemaTypes.typeString,
+        billboard_title_en: SchemaTypes.typeString,
+        billboard_icon: SchemaTypes.typeString,
+        billboard_type: SchemaTypes.typeString,
+        billboard_metric_type: SchemaTypes.typeString,
+        billboard_threshold_warning: SchemaTypes.typeNumber,
+        billboard_threshold_danger: SchemaTypes.typeNumber,
+      },
+    },
+    [constants.UNAUTH_CODE]: {
+      type: constants.OBJECT_TYPE,
+      properties: {
+        message: SchemaTypes.typeString,
+      },
+    },
+  },
+}
 const getAllSchema = {
   tags: [constants.SCHEMA_TAG_BILLBOARD],
   querystring: {
@@ -163,4 +197,4 @@ const getAllSchema = {
   },
 }
 
-export { createSchema, getOneSchema, updateSchema, getAllSchema }
+export { createSchema, getOneSchema, updateSchema, getAllSchema, getData }

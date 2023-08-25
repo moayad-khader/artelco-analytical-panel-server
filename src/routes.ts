@@ -6,6 +6,7 @@ export default {
   //SECTION - Billboard
   billboard: '/billboard',
   billboard_single: '/billboard-single',
+  billboard_data: '/billboard-data',
 
   //SECTION - Chart
   chart: '/chart',

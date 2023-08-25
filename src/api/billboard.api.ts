@@ -8,7 +8,8 @@ import {
   createSchema,
   updateSchema,
   getOneSchema,
-  getAllSchema
+  getAllSchema,
+  getData
 } from '../schemas/billboard.schema'
 import { createBody, updateBody } from '../request.types/billboard.body.types'
 import { FastifyInstance } from 'fastify'
@@ -40,6 +41,13 @@ export default (fastify: FastifyInstance, opts, done) => {
     schema: getAllSchema,
     handler: getAllHandler,
   })
+
+  fastify.get<{ Querystring: getOne }>(Routes.billboard_data, {
+    // preValidation: checkAuthorization,
+    // schema: getData,
+    handler: getOneHandler,
+  })
+
 
   done()
 }

@@ -1,8 +1,9 @@
 import { FastifyReply, FastifyRequest, RouteHandlerMethod } from 'fastify'
+import { getManager } from 'typeorm'
 import constants from '../constants'
 import { AppDataSource } from '../data-source'
 import { Billboard } from '../entity/Billboard'
-import messages from '../messages'
+import { queryBuilder } from '../utils/billboard.utils'
 import { createBody, updateBody } from '../request.types/billboard.body.types'
 import { getOne, getAll } from '../request.types/billboard.query.types'
 
@@ -133,15 +134,15 @@ const getAllHandler = async function (
 
   const billboards = await billboardRepository
     .createQueryBuilder('billboard')
-    .leftJoinAndSelect('billboard.db_table_filter', 'db_table_filter')
+    // .leftJoinAndSelect('billboard.db_table_filter', 'db_table_filter')
     .leftJoinAndSelect('billboard.db_table_column', 'db_table_column')
     .leftJoinAndSelect('db_table_column.db_table', 'db_table')
     .leftJoinAndSelect('db_table.db_table_type', 'db_table_type')
     .leftJoinAndSelect('db_table.database', 'database')
-    .where('billboard.database.organization_id = :organization_id', { organization_id })
+    .where('billboard.database.organization_id = :organization_id', {
+      organization_id,
+    })
     .getMany()
-
-
 
   return reply
     .code(constants.SUCCESS_CODE)
@@ -149,4 +150,36 @@ const getAllHandler = async function (
     .send(billboards)
 }
 
-export { createHandler, getOneHandler, updateHandler, getAllHandler }
+const getDataHandler = async function (
+  req: FastifyRequest<{ Querystring: getOne }>,
+  reply: FastifyReply,
+) {
+  const { billboard_id } = req.query
+  const billboard: Billboard = await billboardRepository
+    .createQueryBuilder('billboard')
+    // .leftJoinAndSelect('billboard.db_table_filter', 'db_table_filter')
+    .leftJoinAndSelect('billboard.db_table_column', 'db_table_column')
+    .leftJoinAndSelect('db_table_column.db_table', 'db_table')
+    .leftJoinAndSelect('db_table.db_table_type', 'db_table_type')
+    .leftJoinAndSelect('db_table.database', 'database')
+    .where('billboard.billboard_id = :billboard_id', {
+      billboard_id,
+    })
+    .getOne()
+
+  const sqlQuery = queryBuilder(billboard)
+  const queryRunner = await AppDataSource.createQueryRunner()
+  var result = await queryRunner.manager.query(sqlQuery)
+  return reply
+    .code(constants.SUCCESS_CODE)
+    .header(constants.CONTENT_TYPE, constants.APPLICATION_JSON)
+    .send(result)
+}
+
+export {
+  createHandler,
+  getOneHandler,
+  updateHandler,
+  getAllHandler,
+  getDataHandler,
+}
