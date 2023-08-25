@@ -44,7 +44,7 @@ export default (fastify: FastifyInstance, opts, done) => {
 
   fastify.get<{ Querystring: getOne }>(Routes.billboard_data, {
     // preValidation: checkAuthorization,
-    // schema: getData,
+    schema: getData,
     handler: getOneHandler,
   })
 

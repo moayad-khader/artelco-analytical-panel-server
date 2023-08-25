@@ -12,6 +12,7 @@ export default {
   typeObject: { type: constants.OBJECT_TYPE, nullable: true },
   typeBoolean: { type: constants.BOOL_TYPE, nullable: true },
   typeArray: { type: constants.ARRAY_TYPE, nullable: true },
+  typeAny: { type: constants.ANY_TYPE, nullable: true },
   createObjectSchemaType: (obj_type: string, props: object): ObjectSchema => {
     return {
       type: obj_type,

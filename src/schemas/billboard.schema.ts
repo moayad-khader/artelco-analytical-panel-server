@@ -143,16 +143,7 @@ const getData = {
     [constants.SUCCESS_CODE]: {
       type: constants.OBJECT_TYPE,
       properties: {
-        billboard_id: SchemaTypes.typeNumber,
-        db_table_column_id: SchemaTypes.typeNumber,
-        db_table_filter_id: SchemaTypes.typeNumber,
-        billboard_title_ar: SchemaTypes.typeString,
-        billboard_title_en: SchemaTypes.typeString,
-        billboard_icon: SchemaTypes.typeString,
-        billboard_type: SchemaTypes.typeString,
-        billboard_metric_type: SchemaTypes.typeString,
-        billboard_threshold_warning: SchemaTypes.typeNumber,
-        billboard_threshold_danger: SchemaTypes.typeNumber,
+        result: SchemaTypes.typeAny
       },
     },
     [constants.UNAUTH_CODE]: {

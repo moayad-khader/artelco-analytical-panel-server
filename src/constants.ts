@@ -22,6 +22,7 @@ export const constants = {
 
   OBJECT_TYPE: 'object',
   ARRAY_TYPE: 'array',
+  ANY_TYPE: 'array',
   STRING_TYPE: 'string',
   NUMBER_TYPE: 'number',
   BOOL_TYPE: 'boolean',
