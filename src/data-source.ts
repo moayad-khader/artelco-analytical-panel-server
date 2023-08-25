@@ -10,6 +10,8 @@ import { DataTableColumn } from './entity/DatabaseTableColumn'
 import { DatabaseTableType } from './entity/DatabaseTabletype'
 import { DatabaseTableFilter } from './entity/DatabaseTableFilter'
 import { Billboard } from './entity/Billboard'
+import { Chart } from './entity/Chart';
+import { Tabular } from './entity/Tabular';
 
 
 import envVars from './vars'
@@ -23,6 +25,8 @@ const models = [
   DataTableColumn,
   DatabaseTableFilter,
   Billboard,
+  Chart,
+  Tabular
 ]
 
 export const AppDataSource = new DataSource({
